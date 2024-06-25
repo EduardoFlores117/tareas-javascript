@@ -1,73 +1,106 @@
-// Tarea 1: Invertir una cadena
-function invertirCadena() {
-    const input = document.getElementById('inputString').value;
-    const invertida = input.split('').reverse().join('');
-    document.getElementById('result1').innerText = `Cadena invertida: ${invertida}`;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas en JavaScript</title>
 
-// Tarea 2: Número primo
-function esPrimo() {
-    const numero = parseInt(document.getElementById('inputNumber').value);
-    if (numero <= 1) {
-        document.getElementById('result2').innerText = 'No es un número primo';
-        return;
-    }
-    for (let i = 2; i < numero; i++) {
-        if (numero % i === 0) {
-            document.getElementById('result2').innerText = 'No es un número primo';
-            return;
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-    }
-    document.getElementById('result2').innerText = 'Es un número primo';
-}
-
-// Tarea 3: Eliminar duplicados en un arreglo
-function eliminarDuplicados() {
-    const input = document.getElementById('inputArray').value;
-    const array = input.split(',').map(Number);
-    const sinDuplicados = [...new Set(array)];
-    document.getElementById('result3').innerText = `Arreglo sin duplicados: ${sinDuplicados.join(', ')}`;
-}
-
-// Tarea 4: Factorial de un número
-function calcularFactorial() {
-    const numero = parseInt(document.getElementById('inputFactorial').value);
-    if (numero < 0) {
-        document.getElementById('result4').innerText = 'El factorial no está definido para números negativos';
-        return;
-    }
-    let factorial = 1;
-    for (let i = 1; i <= numero; i++) {
-        factorial *= i;
-    }
-    document.getElementById('result4').innerText = `Factorial de ${numero}: ${factorial}`;
-}
-
-// Tarea 5: Recuento de vocales
-function contarVocales() {
-    const input = document.getElementById('inputVowels').value.toLowerCase();
-    const vocales = 'aeiou';
-    let contador = 0;
-    for (let char of input) {
-        if (vocales.includes(char)) {
-            contador++;
+        .container {
+            margin-top: 20px;
         }
-    }
-    document.getElementById('result5').innerText = `Número de vocales: ${contador}`;
-}
+        .task {
+            background-color: #ffffff;
+            border: 2px solid #dedede;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333333;
+        }
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input {
+            border: 2px solid #dedede;
+            border-radius: 5px;
+        }
+        p {
+            font-weight: bold;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Tareas en JavaScript</h1>
 
-// Tarea 6: Suma los números en un arreglo
-function sumarNumeros() {
-    const input = document.getElementById('inputSumArray').value;
-    const array = input.split(',').map(Number);
-    const suma = array.reduce((acc, num) => acc + num, 0);
-    document.getElementById('result6').innerText = `Suma de los números: ${suma}`;
-}
+        <div class="task" id="task1">
+            <h2>Tarea 1: Invertir una cadena</h2>
+            <input type="text" class="form-control" id="inputString" placeholder="Ingrese una cadena">
+            <button class="btn mt-2" onclick="invertirCadena()">Invertir Cadena</button>
+            <p id="result1" class="mt-2"></p>
+        </div>
 
-// Tarea 7: Encontrar el máximo en un arreglo
-function encontrarMaximo() {
-    const input = document.getElementById('inputMaxArray').value;
-    const array = input.split(',').map(Number);
-    const maximo = Math.max(...array);
-    document.getElementById('result7').innerText = `Número máximo: ${maximo}`;
-}
+        <div class="task" id="task2">
+            <h2>Tarea 2: Número primo</h2>
+            <input type="number" class="form-control" id="inputNumber" placeholder="Ingrese un número">
+            <button class="btn mt-2" onclick="esPrimo()">Verificar Primo</button>
+            <p id="result2" class="mt-2"></p>
+        </div>
+
+        <div class="task" id="task3">
+            <h2>Tarea 3: Eliminar duplicados en un arreglo</h2>
+            <input type="text" class="form-control" id="inputArray" placeholder="Ingrese un arreglo (ej: 1,2,3,4)">
+            <button class="btn mt-2" onclick="eliminarDuplicados()">Eliminar Duplicados</button>
+            <p id="result3" class="mt-2"></p>
+        </div>
+
+        <div class="task" id="task4">
+            <h2>Tarea 4: Factorial de un número</h2>
+            <input type="number" class="form-control" id="inputFactorial" placeholder="Ingrese un número">
+            <button class="btn mt-2" onclick="calcularFactorial()">Calcular Factorial</button>
+            <p id="result4" class="mt-2"></p>
+        </div>
+
+        <div class="task" id="task5">
+            <h2>Tarea 5: Recuento de vocales</h2>
+            <input type="text" class="form-control" id="inputVowels" placeholder="Ingrese una cadena">
+            <button class="btn mt-2" onclick="contarVocales()">Contar Vocales</button>
+            <p id="result5" class="mt-2"></p>
+        </div>
+
+        <div class="task" id="task6">
+            <h2>Tarea 6: Suma los números en un arreglo</h2>
+            <input type="text" class="form-control" id="inputSumArray" placeholder="Ingrese un arreglo (ej: 1,2,3,4)">
+            <button class="btn mt-2" onclick="sumarNumeros()">Sumar Números</button>
+            <p id="result6" class="mt-2"></p>
+        </div>
+
+        <div class="task" id="task7">
+            <h2>Tarea 7: Encontrar el máximo en un arreglo</h2>
+            <input type="text" class="form-control" id="inputMaxArray" placeholder="Ingrese un arreglo (ej: 1,2,3,4)">
+            <button class="btn mt-2" onclick="encontrarMaximo()">Encontrar Máximo</button>
+            <p id="result7" class="mt-2"></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
